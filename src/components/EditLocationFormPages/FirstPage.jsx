@@ -12,19 +12,21 @@ const Error = ({name}) => (
 );
 
 const PageSelect = (props) => {
-  //console.log(props);
-  const cuisines = props.field.value.map((cuisine) => ({
-    id: cuisine.id,
+  const {selectOptions, form, field} = props;
+  const cuisines = selectOptions.map((cuisine) => ({
+    ...cuisine,
     value: cuisine.name,
     label: cuisine.name,
   }));
   return <Select
-      isMulti={true}
-      options={cuisines}
-    />;
+    isMulti={true}
+    options={cuisines}
+    value={field.value}
+    onChange={(values) => form.setFieldValue('cuisines', values)}
+  />;
 };
 
-const EditLocationFirstPage = () => {
+const EditLocationFirstPage = (props) => {
   return (
     <Fragment>
       <div>
@@ -110,11 +112,13 @@ const EditLocationFirstPage = () => {
       <div style={{maxWidth:'500px'}}>
         <label>Cuisines</label>
         <Field
-          name="cuisinesOptions"
+          selectOptions={props.selectOptions}
+          name="cuisines"
           component={PageSelect}
           placeholder="Cuisines"
+          type="input"
         />
-
+        <Error name="cuisines"/>
       </div>
     </Fragment>
   )

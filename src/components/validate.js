@@ -24,9 +24,9 @@ export const validateFirstPage = values => {
   if (!values.website) {
     errors.website = 'Required'
   }
-  /*if (!values.cuisines) {
+  if (!values.cuisines) {
     errors.cuisines = 'Required'
-  }*/
+  }
   return errors
 };
 
