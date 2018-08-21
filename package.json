@@ -5,6 +5,7 @@
   "dependencies": {
     "formik": "^1.0.3",
     "react": "^16.4.2",
+    "react-checkbox-group": "^4.0.1",
     "react-dom": "^16.4.2",
     "react-dropzone": "^5.0.1",
     "react-redux": "^5.0.7",

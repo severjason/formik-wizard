@@ -19,13 +19,24 @@ class EditLocationForm extends React.Component {
     zipcode: this.props.address ? this.props.address.zip_code : '',
     phoneNumber: this.props.phone ? this.props.phone : '',
     website: this.props.website_link ? this.props.website_link : '',
-    cuisines: '',
+    cuisines: [
+      {
+        "id": 9,
+        "name": "Mexican",
+        "image": {
+          "url": "/uploads/restaurant/cuisine/image/9/cuisine-american.jpeg"
+        },
+        "value": "Mexican",
+        "label": "Mexican"
+      }
+    ],
     menu_link: this.props.menu_link ? this.props.menu_link : '',
     short_description: this.props.short_description ? this.props.short_description : '',
     long_description: this.props.long_description ? this.props.long_description : '',
     photos: this.props.photos && this.props.photos.length ? this.props.photos : [],
     min_cost_item: this.props.min_cost_item ? this.props.min_cost_item : '',
     max_cost_item: this.props.max_cost_item ? this.props.max_cost_item : '',
+    services: this.props.services ? this.props.services : '',
   };
 
   onSubmit = (values) => {
@@ -33,7 +44,7 @@ class EditLocationForm extends React.Component {
   };
 
   render() {
-    const {cuisines} = this.props;
+    const {cuisines, services} = this.props;
     return (
       <div style={{display: 'flex', maxWidth: '600px', paddingTop:'100px', margin:'0 auto'}}>
         <FormikWizard
@@ -51,7 +62,7 @@ class EditLocationForm extends React.Component {
             <EditLocationThirdPage/>
           </FormikWizard.Page>
           <FormikWizard.Page >
-            <EditLocationFourthPage/>
+            <EditLocationFourthPage services={services}/>
           </FormikWizard.Page>
         </FormikWizard>
       </div>
