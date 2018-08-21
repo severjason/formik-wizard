@@ -1,0 +1,75 @@
+{
+  "id": 24,
+  "name": "Byblos Miami",
+  "long_description": "Byblos brings the exciting flavors of the Eastern Mediterranean to diners in a progressively designed space. Byblos represents a marriage of Eastern Mediterranean cuisine with strong influences from both traditional and local ingredients. Using time-honored classic cooking techniques and modern methods the menu is a true coastal  and cultural mosaic, served family style in a convivial atmosphere.",
+  "short_description": "In the Heart of the Shorecrest Building",
+  "website_link": "http://www.byblosmiami.com/menu",
+  "menu_link": "link",
+  "phone": "3056801308",
+  "min_cost_item": 31,
+  "max_cost_item": 60,
+  "rating": "0.0",
+  "price_rating": "$$$",
+  "max_discount": 10,
+  "favourites_count": 0,
+  "is_favourite": false,
+  "services": [
+    {
+      "id": 6,
+      "name": "Cocktails"
+    },
+    {
+      "id": 1,
+      "name": "Parking/Valet"
+    },
+    {
+      "id": 7,
+      "name": "Private Parties"
+    },
+    {
+      "id": 5,
+      "name": "Smoking Allowed"
+    }
+  ],
+  "cuisines": [
+    {
+      "id": 9,
+      "name": "Mexican",
+      "image": {
+        "url": "/uploads/restaurant/cuisine/image/9/cuisine-american.jpeg"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Not Mexican",
+      "image": {
+        "url": "/uploads/restaurant/cuisine/image/9/cuisine-american.jpeg"
+      }
+    }
+  ],
+  "photos": [
+    {
+      "file": {
+        "url": "http://localhost:5000/uploads/photo/file/5/rest.jpg"
+      }
+    },
+    {
+      "file": {
+        "url": "http://localhost:5000/uploads/photo/file/22/rest.jpg"
+      }
+    }
+  ],
+  "neighborhood": {
+    "id": 94,
+    "name": "Miami Beach"
+  },
+  "address": {
+    "address": "1545 Collins Avenue",
+    "city": "Miami Beach",
+    "state": "FL",
+    "country": "US",
+    "zip_code": "33139",
+    "lat": 25.78826,
+    "lng": -80.129403
+  }
+}
