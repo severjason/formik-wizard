@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { Field, FieldArray } from 'formik';
+import { Field } from 'formik';
 import {Checkbox, CheckboxGroup} from 'react-checkbox-group';
 
 const Error = ({ name }) => (
@@ -14,38 +14,37 @@ const Error = ({ name }) => (
 const allServices = [
   {
     "id": 1,
-    "name": "Parking/Valet"
+    "name": "Parking/Valet",
   },
   {
     "id": 2,
-    "name": "Outdoor Seating"
+    "name": "Outdoor Seating",
   },
   {
     "id": 3,
-    "name": "Pet Friendly"
+    "name": "Pet Friendly",
   },
   {
     "id": 4,
-    "name": "Handicap Accessible"
+    "name": "Handicap Accessible",
   },
   {
     "id": 5,
-    "name": "Smoking Allowed"
+    "name": "Smoking Allowed",
   },
   {
     "id": 6,
-    "name": "Cocktails"
+    "name": "Cocktails",
   },
   {
     "id": 7,
-    "name": "Private Parties"
+    "name": "Private Parties",
   },
   {
     "id": 8,
-    "name": "Big Groups"
+    "name": "Big Groups",
   },
 ];
-
 
 const CheckBoxes = (props) => {
   const { field, form } = props;
@@ -63,11 +62,9 @@ const CheckBoxes = (props) => {
       onChange={(values) => {
         const convertedValues = values.map(value => ({
           id: value,
-          name: allServices[value - 1].name
+          name: allServices[value - 1].name,
         }));
         form.setFieldValue('services', convertedValues);
-        console.log(values);
-        console.log(convertedValues);
       }}
     >
       {labels}

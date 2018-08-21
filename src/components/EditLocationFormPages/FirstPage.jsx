@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Field } from 'formik';
 import Select from 'react-select';
+import LocationSearchInput from '../LocationSearchInput';
 
 const Error = ({name}) => (
   <Field
@@ -43,7 +44,7 @@ const EditLocationFirstPage = (props) => {
         <label>Location</label>
         <Field
           name="location"
-          component="input"
+          component={LocationSearchInput}
           type="text"
           placeholder="Location"
         />
