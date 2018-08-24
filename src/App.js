@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import EditLocationForm from './components/EditLocationForm';
 import data from './data.json';
 
