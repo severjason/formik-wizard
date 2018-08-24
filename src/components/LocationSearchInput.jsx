@@ -17,12 +17,13 @@ class LocationSearchInput extends React.Component {
 
   handleSelect = address => {
     geocodeByAddress(address)
-      .then(results => {
-        // todo
-        // set value to fields
-        return getLatLng(results[0])
-      })
-      .catch(error => console.error('Error', error));
+	    .then(results => {
+	      this.setValue('location', results[0].formatted_address);
+		    this.setState({ address: results[0].formatted_address });
+	      return getLatLng(results[0])
+	    })
+	    .then(latLng => console.log('Success', latLng))
+	    .catch(error => console.error('Error', error));
   };
 
   render() {
