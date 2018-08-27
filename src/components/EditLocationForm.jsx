@@ -33,7 +33,7 @@ class EditLocationForm extends React.Component {
 		photos: this.props.photos && this.props.photos.length ? this.props.photos : [],
 		min_cost_item: this.props.min_cost_item ? this.props.min_cost_item : '',
 		max_cost_item: this.props.max_cost_item ? this.props.max_cost_item : '',
-		services: this.props.services ? this.props.services : '',
+		services: this.props.services ? this.props.services : [],
 	};
 
 	onSubmit = (values) => {
