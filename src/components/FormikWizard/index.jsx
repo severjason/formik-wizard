@@ -75,7 +75,7 @@ class FormikWizard extends React.Component {
                     <span className="spep_numer">1.</span>
                     <span className='spep_name'>Location</span>
                   </div>
-                  <div className='step__point active'>
+                  <div className={`step__point ${page === 0 ? 'active' : ''}`}>
                     <div className='line'/>
                     <div className='circle'/>
                     <div className='line'/>
@@ -86,7 +86,7 @@ class FormikWizard extends React.Component {
                     <span className="spep_numer">2.</span>
                     <span className='spep_name'>About</span>
                   </div>
-                  <div className='step__point'>
+                  <div className={`step__point ${page === 1 ? 'active' : ''}`}>
                     <div className='line'/>
                     <div className='circle'/>
                     <div className='line'/>
@@ -97,7 +97,7 @@ class FormikWizard extends React.Component {
                     <span className="spep_numer">3.</span>
                     <span className='spep_name'>Photos</span>
                   </div>
-                  <div className='step__point'>
+                  <div className={`step__point ${page === 2 ? 'active' : ''}`}>
                     <div className='line'/>
                     <div className='circle'/>
                     <div className='line'/>
@@ -108,7 +108,7 @@ class FormikWizard extends React.Component {
                     <span className="spep_numer">4.</span>
                     <span className='spep_name'>Services</span>
                   </div>
-                  <div className='step__point'>
+                  <div className={`step__point ${page === 3 ? 'active' : ''}`}>
                     <div className='line'/>
                     <div className='circle'/>
                     <div className='line'/>
