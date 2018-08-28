@@ -12,6 +12,7 @@ const FormikField = (labelName, fieldName, component, type, placeholder, autoCom
 			name={fieldName}
 			component={component}
 			type={type}
+			maxLength={(fieldName === 'short_description' || fieldName === 'long_description') ? 4000 : 40}
 			placeholder={placeholder}
 			{...props}
 		/>

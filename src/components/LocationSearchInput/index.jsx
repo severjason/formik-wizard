@@ -8,7 +8,7 @@ class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.setValue = this.props.form.setFieldValue;
-    this.state = { address: '' };
+    this.state = { address: this.props.field.value };
   }
 
   handleChange = address => {
@@ -27,7 +27,7 @@ class LocationSearchInput extends React.Component {
         this.setValue('lng', latLng.lng);
 	      //console.log('Success', latLng);
       })
-	    .catch(error => console.error('Error', error));
+	    .catch(error => {/*console.error('Error', error)*/});
   };
 
   render() {

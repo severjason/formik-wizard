@@ -5,7 +5,7 @@ const Error = ({name}) => (
 	<Field
 		name={name}
 		render={({form: {touched, errors}}) =>
-			touched[name] && errors[name] ? <span>{errors[name]}</span> : null
+			touched[name] && errors[name] ? <label className="error">{errors[name]}</label> : null
 		}
 	/>
 );

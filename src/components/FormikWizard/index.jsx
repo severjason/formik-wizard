@@ -26,11 +26,8 @@ class FormikWizard extends React.Component {
       values,
     }));
 
-  setPage = (values, page) =>
-    this.setState(state => ({
-      page,
-      values,
-  }));
+  setPage = (page) =>
+    this.setState(state => ({page}));
 
   previous = () =>
     this.setState(state => ({
@@ -46,12 +43,6 @@ class FormikWizard extends React.Component {
     } else {
       this.next(values);
       bag.setSubmitting(false);
-    }
-  };
-
-  handleTitleClick = (values, page, isValid) => {
-    if (isValid) {
-      this.setPage(values, page);
     }
   };
 
@@ -71,7 +62,7 @@ class FormikWizard extends React.Component {
             <div className="card-header">
               <div className='steps-form__header mb-4 d-flex extra-small-text'>
                 <div className="steps-form__header__item">
-                  <div className='mb-4' onClick={() => this.handleTitleClick(values, 0, isValid)}>
+                  <div className='mb-4'>
                     <span className="spep_numer">1.</span>
                     <span className='spep_name'>Location</span>
                   </div>
@@ -82,7 +73,7 @@ class FormikWizard extends React.Component {
                   </div>
                 </div>
                 <div className="steps-form__header__item">
-                  <div className='mb-4' onClick={() => this.handleTitleClick(values, 1, isValid)}>
+                  <div className='mb-4' >
                     <span className="spep_numer">2.</span>
                     <span className='spep_name'>About</span>
                   </div>
@@ -93,7 +84,7 @@ class FormikWizard extends React.Component {
                   </div>
                 </div>
                 <div className="steps-form__header__item">
-                  <div className='mb-4' onClick={() => this.handleTitleClick(values, 2, isValid)}>
+                  <div className='mb-4' >
                     <span className="spep_numer">3.</span>
                     <span className='spep_name'>Photos</span>
                   </div>
@@ -104,7 +95,7 @@ class FormikWizard extends React.Component {
                   </div>
                 </div>
                 <div className="steps-form__header__item">
-                  <div className='mb-4' onClick={() => this.handleTitleClick(values, 3, isValid)}>
+                  <div className='mb-4'>
                     <span className="spep_numer">4.</span>
                     <span className='spep_name'>Services</span>
                   </div>
