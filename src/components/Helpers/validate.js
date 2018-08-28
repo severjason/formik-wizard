@@ -21,9 +21,6 @@ export const validateFirstPage = values => {
   if (!values.phoneNumber) {
     errors.phoneNumber = 'Required'
   }
-  if (!values.website) {
-    errors.website = 'Required'
-  }
   if (!values.cuisines) {
     errors.cuisines = 'Required'
   }
@@ -32,9 +29,6 @@ export const validateFirstPage = values => {
 
 export const validateSecondPage = values => {
   const errors = {};
-  if (!values.menu_link) {
-    errors.menu_link = 'Required'
-  }
   if (!values.short_description) {
     errors.short_description = 'Required'
   }

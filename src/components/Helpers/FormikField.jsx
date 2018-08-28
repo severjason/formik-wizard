@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Field } from 'formik';
 import { Error } from '../Helpers';
 
 const FormikField = (labelName, fieldName, component, type, placeholder, autoComplete, fieldClass = "", ...props) => (
-	<div>
-		{labelName && <label>{labelName}</label>}
+	<Fragment>
+		{labelName && <label htmlFor={fieldName} className='opacity-text extra-small-text'>{labelName}</label>}
 		<Field
-			className={fieldClass}
+			id={fieldName}
+			className={`form-control project-input bg-white ${fieldClass}`}
 			autoComplete={autoComplete ? autoComplete : ''}
 			name={fieldName}
 			component={component}
@@ -15,7 +16,7 @@ const FormikField = (labelName, fieldName, component, type, placeholder, autoCom
 			{...props}
 		/>
 		<Error name={fieldName}/>
-	</div>
+  </Fragment>
 );
 
 export default FormikField;

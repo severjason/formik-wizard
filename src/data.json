@@ -15,20 +15,36 @@
   "is_favourite": false,
   "services": [
     {
-      "id": 6,
-      "name": "Cocktails"
-    },
-    {
       "id": 1,
       "name": "Parking/Valet"
+    },
+    {
+      "id": 2,
+      "name": "Outdoor Seating"
+    },
+    {
+      "id": 3,
+      "name": "Pet Friendly"
+    },
+    {
+      "id": 4,
+      "name": "Handicap Accessible"
+    },
+    {
+      "id": 5,
+      "name": "Smoking Allowed"
+    },
+    {
+      "id": 6,
+      "name": "Cocktails"
     },
     {
       "id": 7,
       "name": "Private Parties"
     },
     {
-      "id": 5,
-      "name": "Smoking Allowed"
+      "id": 8,
+      "name": "Big Groups"
     }
   ],
   "cuisines": [

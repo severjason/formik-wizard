@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import EditLocationForm from './components/EditLocationForm';
+import RestaurantForm from './components/RestaurantForm';
 import data from './data.json';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
     return (
-        <EditLocationForm {...data}/>
+        <RestaurantForm restaurant = {data} {...data}/>
     );
   }
 }

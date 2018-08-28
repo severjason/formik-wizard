@@ -22,7 +22,11 @@ class LocationSearchInput extends React.Component {
 		    this.setState({ address: results[0].formatted_address });
 	      return getLatLng(results[0])
 	    })
-	    .then(latLng => console.log('Success', latLng))
+	    .then(latLng => {
+        this.setValue('lat', latLng.lat);
+        this.setValue('lng', latLng.lng);
+	      //console.log('Success', latLng);
+      })
 	    .catch(error => console.error('Error', error));
   };
 
@@ -34,11 +38,11 @@ class LocationSearchInput extends React.Component {
         onSelect={this.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
+          <div className="autocomplete-wrapper">
             <input
               {...getInputProps({
                 placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                className: 'location-search-input form-control project-input bg-white',
               })}
             />
             <div className="autocomplete-dropdown-container">

@@ -1,0 +1,28 @@
+.autocomplete-wrapper {
+  position: relative;
+
+  .autocomplete-dropdown-container {
+    width: 100%;
+    background-color: #fff;
+    position: absolute!important;
+    z-index: 1000;
+    border-radius: 2px;
+    font-family: Arial,sans-serif;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 20px;
+
+    .suggestion-item {
+      cursor: default;
+      padding: 0 4px;
+    }
+  }
+}
+
+.hidden-field {
+  position: absolute;
+  visibility: hidden;
+}
