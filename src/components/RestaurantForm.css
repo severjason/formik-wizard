@@ -36,6 +36,9 @@
   transition: 0.3s ease;
   -webkit-transition: 0.3s ease;
   -moz-transition: 0.3s ease; }
+  .input-checkbox label:before input:checked + label:before {
+    animation: pulse .45s ease forwards;
+    -webkit-animation: pulse .45s ease forwards; }
 
 .input-checkbox input:checked + label {
   border-color: #ff4f4f;
