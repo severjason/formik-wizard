@@ -14,10 +14,10 @@ class RestaurantForm extends React.Component {
   initialValues = {
     name: this.props.name ? this.props.name : '',
     location: '',
-    address: '',
+    /*address: '',
     city: '',
     state: '',
-    zipcode: '',
+    zipcode: '',*/
     phoneNumber: '',
     website: '',
     cuisines: [],
@@ -44,7 +44,6 @@ class RestaurantForm extends React.Component {
           <div className="container">
             <div className="row">
               <div className="offset-md-2 col-md-8 d-flex align-items-center flex-column">
-
                 <h2 className='project-title--medium black-color mb-3'>
                   Add a restaurant.
                 </h2>

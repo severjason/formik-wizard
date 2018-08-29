@@ -6,7 +6,7 @@ const CheckBoxes = (props) => {
 	const {field, form} = props;
 	const values = field.value.map((value) => value.id);
 	const labels = allServices.map((service, index) => (
-		<div key={index} className="col-sm-3 col-xs-6 text-center">
+		<div key={index} className="col-sm-3 col-xs-6 text-center checkbox-item">
       <span className="restaurant-checkbox" >
         {allServices[index].name}
       </span>
@@ -22,6 +22,7 @@ const CheckBoxes = (props) => {
 		<CheckboxGroup
 			value={values}
 			checkboxDepth={3}
+      className="form-group checkbox-group"
 			onChange={(values) => {
 				const convertedValues = values.map(value => ({
 					id: value,

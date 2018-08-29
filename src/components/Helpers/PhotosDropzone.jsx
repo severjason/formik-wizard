@@ -6,7 +6,7 @@ const PhotosDropzone = (props) => {
 	const values = props.field.value;
 	//console.log(values);
 	return (
-		<Dropzone accept="image/*" onDrop={(acceptedFiles) => {
+		<Dropzone className="dropzone-container" accept="image/*" onDrop={(acceptedFiles) => {
 			// do nothing if no files
 			if (acceptedFiles.length === 0) { return; }
 			//console.log(acceptedFiles);
@@ -15,20 +15,22 @@ const PhotosDropzone = (props) => {
 		}}>
 			{({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
 				if (isDragActive) {
-					return "This file is authorized";
+					return <div className="upload-background file-authorized"/>;
 				}
 
 				if (isDragReject) {
-					return "This file is not authorized";
+					return <div className="upload-background file-not-authorized"/>;
 				}
 
 				if (values.length === 0) {
-					return <p>Try dragging a file here!</p>
+					return <div className="add-photo-icon">+</div>
 				}
 
 				return values.map((file, i) => {
 					//console.log(file);
-					return <img key={i} src={file.file.url} alt=''/>
+					return <div key={i} className="dropzone-image-container">
+            <img  src={file.file.url} alt=''/>
+					</div>
 				});
 			}}
 		</Dropzone>

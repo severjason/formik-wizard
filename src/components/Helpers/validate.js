@@ -6,7 +6,7 @@ export const validateFirstPage = values => {
   if (!values.location) {
     errors.location = 'This field is required'
   }
-  if (!values.address) {
+  /*if (!values.address) {
     errors.address = 'This field is required'
   }
   if (!values.city) {
@@ -17,7 +17,7 @@ export const validateFirstPage = values => {
   }
   if (!values.zipcode) {
     errors.zipcode = 'This field is required'
-  }
+  }*/
   if (!values.phoneNumber) {
     errors.phoneNumber = 'This field is required'
   }

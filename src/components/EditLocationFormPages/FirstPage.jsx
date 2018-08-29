@@ -22,11 +22,11 @@ const EditLocationFirstPage = (props) => {
       <div className="form-group">
         {FormikField("Location", "location", LocationSearchInput, "text", "Location")}
       </div>
-      <div>
-        {FormikField("Address", "address",  "input", "text", "Address", "street-address")}
+      <div className="form-group ">
+        {FormikField("Phone number", "phoneNumber",  "input", "tel", "Phone number", "tel-national")}
       </div>
       <div className='flex-wrap row'>
-        <div className="form-group col-12 col-lg-6">
+{/*        <div className="form-group col-12 col-lg-6">
           {FormikField("City", "city",  "input", "text", "City", "address-level2")}
         </div>
         <div className="form-group col-12 col-lg-6">
@@ -34,10 +34,7 @@ const EditLocationFirstPage = (props) => {
         </div>
         <div className="form-group col-12 col-lg-6">
           {FormikField("Zipcode", "zipcode",  "input", "text", "Zipcode", "postal-code")}
-        </div>
-        <div className="form-group col-12 col-lg-6">
-          {FormikField("Phone number", "phoneNumber",  "input", "tel", "Phone number", "tel-national")}
-        </div>
+        </div>*/}
         <div className="form-group col-12 col-lg-6">
           {FormikField("Website link", "website",  "input", "text", "Website")}
         </div>

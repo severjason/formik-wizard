@@ -4,7 +4,7 @@ import { FormikField } from '../Helpers';
 const EditLocationSecondPage = () => {
   return (
     <Fragment>
-      <h3>About your location</h3>
+      <div className="h5 text-center">About your location.</div>
       <div className="form-group">
         {FormikField("Menu link", "menu_link", "input", "text", "", "")}
       </div>
