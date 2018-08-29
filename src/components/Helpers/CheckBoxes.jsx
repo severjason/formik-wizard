@@ -26,7 +26,7 @@ const CheckBoxes = (props) => {
 			onChange={(values) => {
 				const convertedValues = values.map(value => ({
 					id: value,
-					name: allServices[value - 1].name,
+					name: allServices.filter(service => service.id === value)[0].name,
 				}));
 				form.setFieldValue('services', convertedValues);
 			}}
