@@ -109,9 +109,9 @@ class FormikWizard extends React.Component {
               <div className="steps-form__body card card--small bg-secondary mb-4">
                 <form onSubmit={handleSubmit}>
                   {activePage}
-
+{/*
                   {<pre>{JSON.stringify(values, null, 2)}</pre>}
-
+*/}
                 </form>
               </div>
               <div className="card-buttons d-flex align-items-center justify-content-center mb-3">
