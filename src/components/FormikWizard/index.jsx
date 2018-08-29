@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
+import _isEmpty from 'lodash/isEmpty';
 
 class FormikWizard extends React.Component {
 
@@ -46,6 +47,10 @@ class FormikWizard extends React.Component {
     }
   };
 
+  handleTitleClick = (validation, values, page) => {
+    return validation(values).then((errors) => (_isEmpty(errors) && this.state.page >= page) ? this.setPage(page) : {});
+  };
+
   render() {
     const {children} = this.props;
     const {page, values} = this.state;
@@ -57,7 +62,7 @@ class FormikWizard extends React.Component {
         enableReinitialize={false}
         validate={this.validate}
         onSubmit={this.handleSubmit}
-        render={({values, isValid, validateForm, handleSubmit, isSubmitting, handleReset}) => (
+        render={({values, validateForm, handleSubmit, isSubmitting, handleReset}) => (
           <div className="card card--middle w-100 steps-form">
             <div className="card-header">
               <div className='steps-form__header mb-4 d-flex extra-small-text'>
@@ -66,29 +71,9 @@ class FormikWizard extends React.Component {
                     <span className="spep_numer">1.</span>
                     <span className='spep_name'>Location</span>
                   </div>
-                  <div className={`step__point ${page === 0 ? 'active' : ''}`}>
-                    <div className='line'/>
-                    <div className='circle'/>
-                    <div className='line'/>
-                  </div>
-                </div>
-                <div className="steps-form__header__item">
-                  <div className='mb-4' >
-                    <span className="spep_numer">2.</span>
-                    <span className='spep_name'>About</span>
-                  </div>
-                  <div className={`step__point ${page === 1 ? 'active' : ''}`}>
-                    <div className='line'/>
-                    <div className='circle'/>
-                    <div className='line'/>
-                  </div>
-                </div>
-                <div className="steps-form__header__item">
-                  <div className='mb-4' >
-                    <span className="spep_numer">3.</span>
-                    <span className='spep_name'>Photos</span>
-                  </div>
-                  <div className={`step__point ${page === 2 ? 'active' : ''}`}>
+                  <div className={`step__point ${page === 0 ? 'active' : ''}`}
+                       onClick={() => this.handleTitleClick(validateForm, values, 0)}
+                  >
                     <div className='line'/>
                     <div className='circle'/>
                     <div className='line'/>
@@ -96,10 +81,36 @@ class FormikWizard extends React.Component {
                 </div>
                 <div className="steps-form__header__item">
                   <div className='mb-4'>
+                    <span className="spep_numer">2.</span>
+                    <span className='spep_name'>About</span>
+                  </div>
+                  <div className={`step__point ${page === 1 ? 'active' : ''}`}
+                       onClick={() => this.handleTitleClick(validateForm, values, 1)}
+                  >
+                    <div className='line'/>
+                    <div className='circle'/>
+                    <div className='line'/>
+                  </div>
+                </div>
+                <div className="steps-form__header__item">
+                  <div className='mb-4'>
+                    <span className="spep_numer">3.</span>
+                    <span className='spep_name'>Photos</span>
+                  </div>
+                  <div className={`step__point ${page === 2 ? 'active' : ''}`}
+                       onClick={() => this.handleTitleClick(validateForm, values, 2)}
+                  >
+                    <div className='line'/>
+                    <div className='circle'/>
+                    <div className='line'/>
+                  </div>
+                </div>
+                <div className="steps-form__header__item">
+                  <div className='mb-4' >
                     <span className="spep_numer">4.</span>
                     <span className='spep_name'>Services</span>
                   </div>
-                  <div className={`step__point ${page === 3 ? 'active' : ''}`}>
+                  <div className={`step__point ${page === 3 ? 'active' : ''}`} onClick={() => this.handleTitleClick(validateForm, values, 3)}>
                     <div className='line'/>
                     <div className='circle'/>
                     <div className='line'/>
