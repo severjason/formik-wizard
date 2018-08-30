@@ -124,7 +124,7 @@ class FormikWizard extends React.Component {
                 <form onSubmit={handleSubmit}>
                   {activePage}
 
-                  {<pre>{JSON.stringify(values, null, 2)}</pre>}
+{/*                  {<pre>{JSON.stringify(values, null, 2)}</pre>}*/}
 
                 </form>
               </div>
