@@ -60,7 +60,7 @@ class RestaurantForm extends React.Component {
                   <FormikWizard.Page>
                     <EditLocationThirdPage/>
                   </FormikWizard.Page>
-                  <FormikWizard.Page>
+                  <FormikWizard.Page validate={validators.validateFourthPage}>
                     <EditLocationFourthPage services={services}/>
                   </FormikWizard.Page>
                 </FormikWizard>

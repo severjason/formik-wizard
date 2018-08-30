@@ -40,7 +40,10 @@ class FormikWizard extends React.Component {
     const {page} = this.state;
     const isLastPage = page === React.Children.count(children) - 1;
     if (isLastPage) {
-      return onSubmit(values);
+      let convertedValues = values;
+      convertedValues.cuisines = values.cuisines.map((cuisine) => cuisine.id);
+      convertedValues.services = values.services.map((service) => service.id);
+      return onSubmit(convertedValues);
     } else {
       this.next(values);
       bag.setSubmitting(false);
@@ -120,9 +123,9 @@ class FormikWizard extends React.Component {
               <div className="steps-form__body card card--small bg-secondary mb-4">
                 <form onSubmit={handleSubmit}>
                   {activePage}
-{/*
+
                   {<pre>{JSON.stringify(values, null, 2)}</pre>}
-*/}
+
                 </form>
               </div>
               <div className="card-buttons d-flex align-items-center justify-content-center mb-3">
