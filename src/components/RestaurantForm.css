@@ -44,32 +44,38 @@
   border-color: #ff4f4f;
   background: #ff4f4f; }
 
-.form-group label.error {
+form label.error {
   color: #8a1f11;
   display: inline-block;
   margin-left: 1.5em;
   font-size: .85em; }
 
-.form-group.checkbox-group {
+form .form-group.checkbox-group {
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center; }
-  .form-group.checkbox-group .checkbox-item {
+  form .form-group.checkbox-group .checkbox-item {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     min-height: 115px; }
-  .form-group.checkbox-group .input-checkbox {
+  form .form-group.checkbox-group .input-checkbox {
     margin: 0;
     padding: 1rem; }
-    .form-group.checkbox-group .input-checkbox label:hover {
+    form .form-group.checkbox-group .input-checkbox label:hover {
       cursor: pointer;
       border: 1px solid #ff4f4f; }
-    .form-group.checkbox-group .input-checkbox label::after {
+    form .form-group.checkbox-group .input-checkbox label::after {
       top: 0; }
+
+.dinelly-select {
+  z-index: 15; }
+
+.card-buttons button {
+  z-index: 10; }
 
 .dropzone-container {
   position: relative;

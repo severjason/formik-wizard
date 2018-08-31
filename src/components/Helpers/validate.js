@@ -1,37 +1,5 @@
 import * as Yup from 'yup';
 
-export const validateFirstPage1 = values => {
-  const errors = {};
-  if (!values.name) {
-    errors.name = 'This field is required'
-  }
-  if (!values.location) {
-    errors.location = 'This field is required'
-  }
-  /*if (!values.address) {
-    errors.address = 'This field is required'
-  }
-  if (!values.city) {
-    errors.city = 'This field is required'
-  }
-  if (!values.state) {
-    errors.state = 'This field is required'
-  }
-  if (!values.zipcode) {
-    errors.zipcode = 'This field is required'
-  }*/
-  if (!values.phoneNumber) {
-    errors.phoneNumber = 'This field is required'
-  }
-  if (isNaN(values.phoneNumber)) {
-    errors.phoneNumber = 'This field should contain only numbers'
-  }
-  if (!values.cuisines) {
-    errors.cuisines = 'This field is required'
-  }
-  return errors
-};
-
 function validationSchemaFirstPage(values) {
   return Yup.object().shape({
     name: Yup.string()
@@ -41,8 +9,8 @@ function validationSchemaFirstPage(values) {
     phoneNumber: Yup.number()
       .typeError('Phone should contain only numbers')
       .required('This field is required'),
-   /* cuisines: Yup.array()
-      .required('This field is required'),*/
+    cuisines_arr: Yup.array()
+      .required('This field is required'),
   })
 }
 
@@ -62,6 +30,8 @@ function validationSchemaFourthPage(values) {
       .required('This field is required'),
     max_cost_item: Yup.number()
       .typeError('Max price should contain only numbers')
+      .required('This field is required'),
+    services_arr: Yup.array()
       .required('This field is required'),
   })
 }

@@ -40,10 +40,14 @@ class FormikWizard extends React.Component {
     const {page} = this.state;
     const isLastPage = page === React.Children.count(children) - 1;
     if (isLastPage) {
-      let convertedValues = values;
-      convertedValues.cuisines = values.cuisines.map((cuisine) => cuisine.id);
-      convertedValues.services = values.services.map((service) => service.id);
-      return onSubmit(convertedValues);
+      return onSubmit(values)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+          bag.setSubmitting(false);
+        });
     } else {
       this.next(values);
       bag.setSubmitting(false);
@@ -109,11 +113,12 @@ class FormikWizard extends React.Component {
                   </div>
                 </div>
                 <div className="steps-form__header__item">
-                  <div className='mb-4' >
+                  <div className='mb-4'>
                     <span className="spep_numer">4.</span>
                     <span className='spep_name'>Services</span>
                   </div>
-                  <div className={`step__point ${page === 3 ? 'active' : ''}`} onClick={() => this.handleTitleClick(validateForm, values, 3)}>
+                  <div className={`step__point ${page === 3 ? 'active' : ''}`}
+                       onClick={() => this.handleTitleClick(validateForm, values, 3)}>
                     <div className='line'/>
                     <div className='circle'/>
                     <div className='line'/>
@@ -124,7 +129,9 @@ class FormikWizard extends React.Component {
                 <form onSubmit={handleSubmit}>
                   {activePage}
 
-{/*                  {<pre>{JSON.stringify(values, null, 2)}</pre>}*/}
+{/*
+                                    {<pre>{JSON.stringify(values, null, 2)}</pre>}
+*/}
 
                 </form>
               </div>
@@ -139,7 +146,8 @@ class FormikWizard extends React.Component {
                 {!isLastPage &&
                 <button className="btn btn-primary uppercase" type="button" onClick={handleSubmit}>Next</button>}
                 {isLastPage && (
-                  <button className="btn btn-primary uppercase" type="button" disabled={isSubmitting} onClick={handleSubmit}>
+                  <button className="btn btn-primary uppercase" type="button" disabled={isSubmitting}
+                          onClick={handleSubmit}>
                     Finish
                   </button>
                 )}

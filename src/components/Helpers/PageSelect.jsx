@@ -9,11 +9,15 @@ const PageSelect = (props) => {
 		value: cuisine.name,
 		label: cuisine.name,
 	}));
-	return <Select
+  return <Select
+		className="dinelly-select"
 		isMulti={true}
 		options={cuisines}
 		value={field.value}
-		onChange={(values) => form.setFieldValue('cuisines', values)}
+		onChange={(values) => {
+			form.setFieldValue('cuisines_arr', values);
+      form.setFieldValue('cuisines', values.map((cuisine) => cuisine.id));
+    }}
 	/>;
 };
 

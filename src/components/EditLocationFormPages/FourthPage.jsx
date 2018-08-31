@@ -17,7 +17,8 @@ const EditLocationFourthPage = (props) => {
         {FormikField("Max menu item price ($)", "max_cost_item", "input", "text", "Max price", "")}
       </div>
         <div className="h5 text-center">Service offerings.</div>
-        {FormikField(false, "services", CheckBoxes, "", "", "", "", props.services)}
+        {FormikField(false, "services_arr", CheckBoxes, "", "", "", "", props.services)}
+        {FormikField(false, "services", "input", "text", "", "", "hidden-field")}
     </Fragment>
   )
 };

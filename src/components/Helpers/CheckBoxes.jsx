@@ -28,7 +28,8 @@ const CheckBoxes = (props) => {
 					id: value,
 					name: allServices.filter(service => service.id === value)[0].name,
 				}));
-				form.setFieldValue('services', convertedValues);
+				form.setFieldValue('services_arr', convertedValues);
+        form.setFieldValue('services', values);
 			}}
 		>
 			{labels}

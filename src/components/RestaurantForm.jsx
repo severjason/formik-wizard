@@ -8,6 +8,8 @@ import {
 } from './EditLocationFormPages';
 import * as validators from './Helpers/validate';
 import './RestaurantForm.css';
+import axios from 'axios';
+
 
 class RestaurantForm extends React.Component {
 
@@ -20,6 +22,7 @@ class RestaurantForm extends React.Component {
     zipcode: '',*/
     phoneNumber: '',
     website: '',
+    cuisines_arr: [],
     cuisines: [],
     menu_link: '',
     short_description: '',
@@ -27,14 +30,13 @@ class RestaurantForm extends React.Component {
     photos: [],
     min_cost_item: '',
     max_cost_item:'',
+    services_arr: [],
     services: [],
     lat: '',
     lng: '',
   };
 
-  onSubmit = (values) => {
-    console.log(values);
-  };
+  onSubmit = (values) => axios.post('/restaurant_owner/restaurants', values);
 
   render() {
     const {cuisines, services} = this.props.restaurant;
