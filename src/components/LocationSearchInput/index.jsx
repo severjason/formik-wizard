@@ -34,6 +34,9 @@ class LocationSearchInput extends React.Component {
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        searchOptions={{
+          componentRestrictions:{ country: ['usa']},
+        }}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className="autocomplete-wrapper">

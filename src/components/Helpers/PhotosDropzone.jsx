@@ -1,5 +1,6 @@
 import React from 'react'
 import Dropzone from 'react-dropzone';
+import axios from 'axios';
 
 const PhotosDropzone = (props) => {
 	//console.log(props);
@@ -9,7 +10,8 @@ const PhotosDropzone = (props) => {
 		<Dropzone className="dropzone-container"  accept="image/*" onDrop={(acceptedFiles) => {
 			// do nothing if no files
 			if (acceptedFiles.length === 0) { return; }
-			// console.log(acceptedFiles);
+			console.log(acceptedFiles);
+			axios.post('restaurant_owner/photos_upload', acceptedFiles);
 			// on drop we add to the existing files
 			//setFieldValue("files", values.files.concat(acceptedFiles));
 		}}>
