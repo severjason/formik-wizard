@@ -1,11 +1,11 @@
-import EditLocationFirstPage from './FirstPage';
-import EditLocationSecondPage from './SecondPage';
-import EditLocationThirdPage from './ThirdPage';
-import EditLocationFourthPage from './FourthPage';
+import Location from './Location';
+import About from './About';
+import Photos from './Photos';
+import Services from './Services';
 
 export {
-  EditLocationFirstPage,
-  EditLocationSecondPage,
-  EditLocationThirdPage,
-  EditLocationFourthPage,
+  Location,
+  About,
+  Photos,
+  Services,
 }

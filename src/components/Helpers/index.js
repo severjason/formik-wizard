@@ -3,6 +3,7 @@ import FormikField from './FormikField';
 import PageSelect from './PageSelect';
 import PhotosDropzone from './PhotosDropzone';
 import CheckBoxes from './CheckBoxes';
+import Title from './Title';
 
 export {
 	Error,
@@ -10,4 +11,5 @@ export {
 	PageSelect,
 	PhotosDropzone,
 	CheckBoxes,
+  Title,
 }

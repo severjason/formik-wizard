@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
-import _isEmpty from 'lodash/isEmpty';
+import _map from 'lodash/map';
+import { Title } from '../Helpers';
 
 class FormikWizard extends React.Component {
 
@@ -9,7 +10,9 @@ class FormikWizard extends React.Component {
     this.state = {
       page: 0,
       values: this.props.initialValues,
+      apiErrors: null,
     };
+    this.titles = ['Location', 'About', 'Photos', 'Services'];
   }
 
   static Page = ({children}) => children;
@@ -27,25 +30,42 @@ class FormikWizard extends React.Component {
       values,
     }));
 
-  setPage = (page) =>
-    this.setState(state => ({page}));
+  setPage = (page) => this.setState(() => ({page}));
 
   previous = () =>
     this.setState(state => ({
       page: Math.max(state.page - 1, 0),
     }));
 
+  transformApiErrors(errors) {
+    const errorsObj = {};
+    _map(errors, (error, key) => {
+      (key === 'address.location') ? errorsObj.location = error[0].join(", ") : errorsObj[key] = error[0];
+    });
+    return errorsObj;
+  }
+
+  handleError = (errors, bag) => {
+    this.setState({apiErrors: this.transformApiErrors(errors)}, () => bag.setErrors(this.state.apiErrors));
+  };
+
+  checkErrorsRelations = (errors) => [
+    (errors) ? !!(errors.name || errors.location || errors.phone || errors.cuisines_arr) : null,
+    (errors) ? !!(errors.short_description || errors.long_description) : null,
+    null,
+    (errors) ? !!(errors.min_cost_item || errors.max_cost_item || errors.cuisines_arr) : null,
+  ];
+
   handleSubmit = (values, bag) => {
     const {children, onSubmit} = this.props;
     const {page} = this.state;
     const isLastPage = page === React.Children.count(children) - 1;
     if (isLastPage) {
+      this.setState({apiErrors: null});
       return onSubmit(values)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
+        .then(({data}) => window.location = data.redirect_to)
+        .catch((error) => {
+          this.handleError(error.response.data, bag);
           bag.setSubmitting(false);
         });
     } else {
@@ -54,86 +74,51 @@ class FormikWizard extends React.Component {
     }
   };
 
-  handleTitleClick = (validation, values, page) => {
-    return validation(values).then((errors) => (_isEmpty(errors) && this.state.page >= page) ? this.setPage(page) : {});
+  handleTitleClick = (errors, page) => {
+    const statePage = this.state.page;
+    return !this.checkErrorsRelations(errors)[statePage] && statePage >= page ? this.setPage(page) : {};
   };
 
   render() {
     const {children} = this.props;
-    const {page, values} = this.state;
+    const {page, values, apiErrors} = this.state;
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
+
     return (
       <Formik
         initialValues={values}
         enableReinitialize={false}
         validate={this.validate}
         onSubmit={this.handleSubmit}
-        render={({values, validateForm, handleSubmit, isSubmitting, handleReset}) => (
+        render={({values, validateForm, handleSubmit, isSubmitting, errors}) => (
           <div className="card card--middle w-100 steps-form">
             <div className="card-header">
               <div className='steps-form__header mb-4 d-flex extra-small-text'>
-                <div className="steps-form__header__item">
-                  <div className='mb-4'>
-                    <span className="spep_numer">1.</span>
-                    <span className='spep_name'>Location</span>
-                  </div>
-                  <div className={`step__point ${page === 0 ? 'active' : ''}`}
-                       onClick={() => this.handleTitleClick(validateForm, values, 0)}
-                  >
-                    <div className='line'/>
-                    <div className='circle'/>
-                    <div className='line'/>
-                  </div>
-                </div>
-                <div className="steps-form__header__item">
-                  <div className='mb-4'>
-                    <span className="spep_numer">2.</span>
-                    <span className='spep_name'>About</span>
-                  </div>
-                  <div className={`step__point ${page === 1 ? 'active' : ''}`}
-                       onClick={() => this.handleTitleClick(validateForm, values, 1)}
-                  >
-                    <div className='line'/>
-                    <div className='circle'/>
-                    <div className='line'/>
-                  </div>
-                </div>
-                <div className="steps-form__header__item">
-                  <div className='mb-4'>
-                    <span className="spep_numer">3.</span>
-                    <span className='spep_name'>Photos</span>
-                  </div>
-                  <div className={`step__point ${page === 2 ? 'active' : ''}`}
-                       onClick={() => this.handleTitleClick(validateForm, values, 2)}
-                  >
-                    <div className='line'/>
-                    <div className='circle'/>
-                    <div className='line'/>
-                  </div>
-                </div>
-                <div className="steps-form__header__item">
-                  <div className='mb-4'>
-                    <span className="spep_numer">4.</span>
-                    <span className='spep_name'>Services</span>
-                  </div>
-                  <div className={`step__point ${page === 3 ? 'active' : ''}`}
-                       onClick={() => this.handleTitleClick(validateForm, values, 3)}>
-                    <div className='line'/>
-                    <div className='circle'/>
-                    <div className='line'/>
-                  </div>
-                </div>
+                {this.titles.map((title, index) => (
+                  <Title
+                    key={title}
+                    title={title}
+                    pageNumber={index}
+                    statePage={page}
+                    errors={errors}
+                    apiErrors={apiErrors}
+                    checkErrorsRelations={this.checkErrorsRelations}
+                    handleTitleClick={this.handleTitleClick}
+                  />
+                ))}
               </div>
-              <div className="steps-form__body card card--small bg-secondary mb-4">
+              <div
+                className={`steps-form__body card card--small bg-secondary mb-4 ${apiErrors ? 'with-api-errors' : ''}`}>
                 <form onSubmit={handleSubmit}>
                   {activePage}
-
 {/*
-                                    {<pre>{JSON.stringify(values, null, 2)}</pre>}
+                 {<pre>{JSON.stringify(values, null, 2)}</pre>}
 */}
-
                 </form>
+                {apiErrors && <div className="api-error">
+                  Please, fix errors in {} and try again...
+                </div>}
               </div>
               <div className="card-buttons d-flex align-items-center justify-content-center mb-3">
                 {

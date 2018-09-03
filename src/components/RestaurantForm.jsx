@@ -1,26 +1,26 @@
 import React from 'react';
 import FormikWizard from './FormikWizard';
 import {
-  EditLocationFirstPage,
-  EditLocationSecondPage,
-  EditLocationThirdPage,
-  EditLocationFourthPage,
+  Location,
+  Photos,
+  About,
+  Services,
 } from './EditLocationFormPages';
 import * as validators from './Helpers/validate';
 import './RestaurantForm.css';
+//import axios from '../../axios-dinelyy';
 import axios from 'axios';
-
 
 class RestaurantForm extends React.Component {
 
   initialValues = {
     name: this.props.name ? this.props.name : '',
     location: '',
-    /*address: '',
-    city: '',
+    address: '',
+    /*city: '',
     state: '',
     zipcode: '',*/
-    phoneNumber: '',
+    phone: '',
     website: '',
     cuisines_arr: [],
     cuisines: [],
@@ -32,11 +32,9 @@ class RestaurantForm extends React.Component {
     max_cost_item:'',
     services_arr: [],
     services: [],
-    lat: '',
-    lng: '',
   };
 
-  onSubmit = (values) => axios.post('/restaurant_owner/restaurants', values);
+  onSubmit = (values) => axios.post(this.props.url, values);
 
   render() {
     const {cuisines, services} = this.props.restaurant;
@@ -54,16 +52,16 @@ class RestaurantForm extends React.Component {
                   onSubmit={this.onSubmit}
                 >
                   <FormikWizard.Page validate={validators.validateFirstPage}>
-                    <EditLocationFirstPage cuisines={cuisines}/>
+                    <Location cuisines={cuisines}/>
                   </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateSecondPage}>
-                    <EditLocationSecondPage/>
+                    <About/>
                   </FormikWizard.Page>
                   <FormikWizard.Page>
-                    <EditLocationThirdPage/>
+                    <Photos/>
                   </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateFourthPage}>
-                    <EditLocationFourthPage services={services}/>
+                    <Services services={services}/>
                   </FormikWizard.Page>
                 </FormikWizard>
               </div>

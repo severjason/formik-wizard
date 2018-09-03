@@ -6,8 +6,8 @@ function validationSchemaFirstPage(values) {
       .required('This field is required'),
     location: Yup.string()
       .required('This field is required'),
-    phoneNumber: Yup.number()
-      .typeError('Phone should contain only numbers')
+    phone: Yup.string()
+      .matches(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, 'Phone is not valid')
       .required('This field is required'),
     cuisines_arr: Yup.array()
       .required('This field is required'),

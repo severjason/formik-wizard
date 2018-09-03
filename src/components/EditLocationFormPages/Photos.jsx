@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { FormikField, PhotosDropzone } from '../Helpers';
 
-const EditLocationThirdPage = () => {
+const Photos = () => {
   return (
     <Fragment>
       <div className="h5 text-center">Upload your photos.</div>
@@ -10,6 +10,6 @@ const EditLocationThirdPage = () => {
   )
 };
 
-export default EditLocationThirdPage;
+export default Photos;
 
 

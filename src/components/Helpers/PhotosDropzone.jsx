@@ -6,10 +6,10 @@ const PhotosDropzone = (props) => {
 	const values = props.field.value;
 	//console.log(values);
 	return (
-		<Dropzone className="dropzone-container" accept="image/*" onDrop={(acceptedFiles) => {
+		<Dropzone className="dropzone-container"  accept="image/*" onDrop={(acceptedFiles) => {
 			// do nothing if no files
 			if (acceptedFiles.length === 0) { return; }
-			//console.log(acceptedFiles);
+			// console.log(acceptedFiles);
 			// on drop we add to the existing files
 			//setFieldValue("files", values.files.concat(acceptedFiles));
 		}}>

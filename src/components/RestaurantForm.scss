@@ -56,6 +56,19 @@
   background: #ff4f4f;
 }
 
+.with-api-errors {
+  border: 1px solid #ff4f4f;
+}
+.label-error {
+  color: #ff4f4f;
+}
+.api-error {
+  color: #8a1f11;
+  font-size: .85em;
+}
+.step__point {
+  cursor: pointer;
+}
 form {
   label.error {
     color: #8a1f11;

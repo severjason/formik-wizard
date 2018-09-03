@@ -6,7 +6,7 @@ const _EditLocationFourthPageProps = {
   services: PropTypes.array,
 };
 
-const EditLocationFourthPage = (props) => {
+const Services = (props) => {
   return (
     <Fragment>
       <div className="h5 text-center">Average price per plate.</div>
@@ -23,6 +23,6 @@ const EditLocationFourthPage = (props) => {
   )
 };
 
-EditLocationFourthPage.propTypes = _EditLocationFourthPageProps;
+Services.propTypes = _EditLocationFourthPageProps;
 
-export default EditLocationFourthPage;
+export default Services;

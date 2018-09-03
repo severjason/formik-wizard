@@ -7,23 +7,20 @@ const _EditLocationFirstPageProps = {
   cuisines: PropTypes.array,
 };
 
-const EditLocationFirstPage = (props) => {
+const Location = (props) => {
   return (
     <Fragment>
       <div className="form-group">
         {FormikField("First Name", "name", "input", "text", "Name", "name")}
       </div>
       <div className="form-group">
-        {FormikField(false, "lat", "input", "text", "", "", "hidden-field")}
-      </div>
-      <div className="form-group">
-        {FormikField(false, "lng", "input", "text", "", "", "hidden-field")}
+        {FormikField(false, "address", "input", "text", "", "", "hidden-field")}
       </div>
       <div className="form-group">
         {FormikField("Location", "location", LocationSearchInput, "text", "Location")}
       </div>
       <div className="form-group ">
-        {FormikField("Phone number", "phoneNumber",  "input", "tel", "Phone number", "tel-national")}
+        {FormikField("Phone number", "phone",  "input", "tel", "Phone number", "tel-national")}
       </div>
       <div className='flex-wrap row'>
         <div className="form-group col-12 col-lg-6">
@@ -40,6 +37,6 @@ const EditLocationFirstPage = (props) => {
   )
 };
 
-EditLocationFirstPage.propTypes = _EditLocationFirstPageProps;
+Location.propTypes = _EditLocationFirstPageProps;
 
-export default EditLocationFirstPage;
+export default Location;

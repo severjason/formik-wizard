@@ -23,9 +23,7 @@ class LocationSearchInput extends React.Component {
 	      return getLatLng(results[0])
 	    })
 	    .then(latLng => {
-        this.setValue('lat', latLng.lat);
-        this.setValue('lng', latLng.lng);
-	      //console.log('Success', latLng);
+        this.setValue('address', {lat: latLng.lat, lng: latLng.lng, location: this.state.address});
       })
 	    .catch(error => {/*console.error('Error', error)*/});
   };

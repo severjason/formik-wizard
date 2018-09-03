@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import { FormikField } from '../Helpers';
 
-const EditLocationSecondPage = () => {
+const About = () => {
   return (
     <Fragment>
       <div className="h5 text-center">About your location.</div>
@@ -18,4 +18,4 @@ const EditLocationSecondPage = () => {
   )
 };
 
-export default EditLocationSecondPage;
+export default About;
