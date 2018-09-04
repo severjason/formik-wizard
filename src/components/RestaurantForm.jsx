@@ -8,8 +8,7 @@ import {
 } from './EditLocationFormPages';
 import * as validators from './Helpers/validate';
 import './RestaurantForm.css';
-//import axios from '../../axios-dinelyy';
-import axios from 'axios';
+import axios from '../../axios-dinelyy';
 
 class RestaurantForm extends React.Component {
 

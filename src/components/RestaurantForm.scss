@@ -57,10 +57,10 @@
 }
 
 .with-api-errors {
-  border: 1px solid #ff4f4f;
+  border: 1px solid #8a1f11;
 }
 .label-error {
-  color: #ff4f4f;
+  color: #8a1f11;
 }
 .api-error {
   color: #8a1f11;
@@ -146,17 +146,22 @@ form {
 
   .upload-background {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     border-radius: 6px;
-    opacity: .3;
   }
   .file-authorized {
-    background-color: #27ae60;
+    border:2px solid #27ae60;
   }
 
   .file-not-authorized {
-    background-color: #ff4f4f;
+    border: 2px solid  #ff4f4f;
+    .error-text {
+      color:#ff4f4f;
+    }
   }
 
   .dropzone-image-container {

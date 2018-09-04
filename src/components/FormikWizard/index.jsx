@@ -113,8 +113,12 @@ class FormikWizard extends React.Component {
                 <form onSubmit={handleSubmit}>
                   {activePage}
 {/*
+
+
                  {<pre>{JSON.stringify(values, null, 2)}</pre>}
+
 */}
+
                 </form>
                 {apiErrors && <div className="api-error">
                   Please, fix errors in {} and try again...
