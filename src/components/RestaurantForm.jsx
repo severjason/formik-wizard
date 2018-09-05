@@ -33,7 +33,17 @@ class RestaurantForm extends React.Component {
     services: [],
   };
 
-  onSubmit = (values) => axios.post(this.props.url, values);
+  onSubmit = (values) => axios.post(this.props.url, {
+    authenticity_token: this.props.form_authenticity_token,
+    restaurant: values,
+  });
+
+  onPhotosUpload = (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("authenticity_token", this.props.form_authenticity_token);
+    return axios.post(this.props.photo_upload_url, formData)
+  };
 
   render() {
     const {cuisines, services} = this.props.restaurant;
@@ -57,7 +67,7 @@ class RestaurantForm extends React.Component {
                     <About/>
                   </FormikWizard.Page>
                   <FormikWizard.Page>
-                    <Photos/>
+                    <Photos onPhotosUpload={this.onPhotosUpload}/>
                   </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateFourthPage}>
                     <Services services={services}/>

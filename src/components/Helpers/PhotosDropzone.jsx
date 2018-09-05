@@ -1,7 +1,5 @@
 import React from 'react'
 import Dropzone from 'react-dropzone';
-import axios from '../../../axios-dinelyy';
-
 
 class PhotosDropzone extends React.Component {
 
@@ -12,16 +10,16 @@ class PhotosDropzone extends React.Component {
 	render() {
     const setFieldValue = this.props.form.setFieldValue;
     const values = this.props.field.value;
+    const onPhotosUpload = this.props[0];
     return (
       <Dropzone className="dropzone-container"  accept="image/*" onDrop={(acceptedFiles) => {
         // do nothing if no files
         if (acceptedFiles.length === 0) { return; }
         this.setState({error: null});
+        // @TODO: Добавь тут токен тоже!
 
         const uploaders = acceptedFiles.map(file => {
-          const formData = new FormData();
-          formData.append("file", file);
-          return axios.post("restaurant_owner/photos_upload", formData)
+          return onPhotosUpload(file)
             .then(response => response.data)
             .catch(error => this.setState({error}))
         });
