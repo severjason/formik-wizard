@@ -1,1 +1,1 @@
-Formik-wizard example form
+Formik-wizard example
