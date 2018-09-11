@@ -1,0 +1,73 @@
+{
+  "opened": [
+    {
+      "id": 1,
+      "email":"test@gmail.com",
+      "name": "John",
+      "phone": "1111111",
+      "reservation_date": "28/07/2018",
+      "reservation_time": "22/12/2017",
+      "party_size": 10,
+      "special_requests": "some shit",
+      "actions": "4444"
+    },
+    {
+      "id": 23,
+      "email":"test@gmail.com",
+      "name": "John1",
+      "phone": "1111111",
+      "reservation_date": "28/07/2014",
+      "reservation_time": "22/12/2017",
+      "party_size": 5,
+      "special_requests": "some poop",
+      "actions": "4444"
+    }
+  ],
+  "closed": [
+    {
+      "id": 1,
+      "email":"test@gmail.com",
+      "name": "John",
+      "phone": "1111111",
+      "reservation_date": "28/07/2018",
+      "reservation_time": "22/12/2017",
+      "party_size": 10,
+      "special_requests": "some shit",
+      "actions": "4444"
+    },
+    {
+      "id": 23,
+      "email":"test@gmail.com",
+      "name": "John1",
+      "phone": "1111111",
+      "reservation_date": "28/07/2014",
+      "reservation_time": "22/12/2017",
+      "party_size": 5,
+      "special_requests": "some poop",
+      "actions": "4444"
+    }
+  ],
+  "canceled": [
+    {
+      "id": 1,
+      "name": "John",
+      "phone": "1111111",
+      "reservation_date": "28/07/2018",
+      "reservation_time": "22/12/2017",
+      "party_size": 10,
+      "special_requests": "some shit",
+      "actions": "4444"
+    },
+    {
+      "id": 23,
+      "email":"test@gmail.com",
+      "name": "John1",
+      "phone": "1111111",
+      "reservation_date": "28/07/2014",
+      "reservation_time": "22/12/2017",
+      "party_size": 5,
+      "special_requests": "some poop",
+      "actions": "4444"
+    }
+  ]
+}
