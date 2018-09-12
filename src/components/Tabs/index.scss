@@ -1,0 +1,20 @@
+.nav-item {
+  cursor: pointer;
+}
+
+.table-responsive {
+  position: relative;
+}
+
+.table-loading {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  &.visible {
+    display: flex;
+  }
+}
