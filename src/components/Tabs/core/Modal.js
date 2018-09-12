@@ -7,6 +7,10 @@ class TabModal extends React.Component {
     checked: false,
   };
 
+  handleClose = () => {
+    this.setState({checked: false}, () => this.props.closeModal());
+  }
+
   handleCheck = () => this.setState(({checked: !this.state.checked}), () => {
     if (this.state.checked) {
       this.props.handleInputChange(0);
@@ -14,9 +18,9 @@ class TabModal extends React.Component {
   });
 
   render() {
-    const {opened, closeModal, inputValue, handleInputChange, handleItemDelete} = this.props;
+    const {opened, inputValue, handleInputChange, handleItemDelete} = this.props;
     return (
-      <Modal isOpen={opened} toggle={closeModal}>
+      <Modal isOpen={opened} toggle={this.handleClose}>
         <ModalHeader>Manage reservation</ModalHeader>
         <ModalBody>
           <Form inline>
@@ -40,11 +44,11 @@ class TabModal extends React.Component {
         <ModalFooter>
           <Button
             color="primary"
-            disabled={inputValue < 0 && inputValue > 12}
+            disabled={inputValue === null}
             onClick={handleItemDelete}>Do Something
           </Button>
           {' '}
-          <Button color="secondary" onClick={closeModal}>Cancel</Button>
+          <Button color="secondary" onClick={this.handleClose}>Cancel</Button>
         </ModalFooter>
       </Modal>
     );

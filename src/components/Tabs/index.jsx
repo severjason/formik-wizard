@@ -30,7 +30,7 @@ class Tab extends React.Component {
       reservations: this.props.reservations,
       modalOpened: false,
       activeId: '',
-      inputValue: '',
+      inputValue: null,
       isLoading: false,
     }
   }
@@ -58,7 +58,7 @@ class Tab extends React.Component {
 
   openModal = (id) => this.setState(() => ({modalOpened: true, activeId: id}));
 
-  closeModal = () => this.setState(() => ({modalOpened: false, activeId: ''}));
+  closeModal = () => this.setState(() => ({modalOpened: false, activeId: '', inputValue: null}));
 
   toggleTab = (type) => this.setState(() => ({type}));
 
@@ -81,9 +81,9 @@ class Tab extends React.Component {
 
   getActions(id) {
     return <React.Fragment>
-      <a onClick={() => this.openModal(id)}>Manage</a>
+      <a href="#" onClick={() => this.openModal(id)}>Manage</a>
       {' '}
-      <a onClick={this.handleCancel}>Cancel</a>
+      <a href="#" onClick={this.handleCancel}>Cancel</a>
     </React.Fragment>
   }
 
