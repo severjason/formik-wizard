@@ -144,15 +144,29 @@ form .form-group.checkbox-group {
     .dropzone-container .dropzone-image-container .dropzone-action {
       display: none;
       justify-content: center;
-      position: absolute; }
+      position: absolute;
+      text-transform: uppercase; }
     .dropzone-container .dropzone-image-container .close-icon {
+      cursor: pointer;
+      z-index: 20;
       top: .2rem;
       right: .2rem; }
     .dropzone-container .dropzone-image-container .set-default {
+      cursor: pointer;
+      z-index: 10;
       position: absolute;
       bottom: .2rem;
-      padding: 2px 5px;
-      width: 145px; }
+      left: 0;
+      padding: 0 .2rem;
+      width: 100%;
+      height: 100%;
+      align-items: flex-end; }
+      .dropzone-container .dropzone-image-container .set-default .title {
+        width: 100%;
+        text-align: center;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.3); }
     .dropzone-container .dropzone-image-container img {
       max-width: 100%;
       max-height: 100%;

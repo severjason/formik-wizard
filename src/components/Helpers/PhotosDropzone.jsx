@@ -70,7 +70,7 @@ class PhotosDropzone extends React.Component {
                 <div className="dropzone-action close-icon" onClick={() => this.handleImageDelete(file.id)}>Delete</div>
                 <img src={file.url} alt=''/>
                 <div className="dropzone-action set-default" onClick={() => this.setState({defaultPhotoId: file.id})}>
-                  {file.id === defaultPhotoId ? <div className='title'>Title</div> : <div>Set as title</div>}
+                  {file.id === defaultPhotoId ? <div className='title'>Title</div> : <div className='title'>Set as title</div>}
                 </div>
               </div>
             })}
