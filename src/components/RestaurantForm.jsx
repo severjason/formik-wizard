@@ -8,12 +8,12 @@ import {
 } from './EditLocationFormPages';
 import * as validators from './Helpers/validate';
 import './RestaurantForm.css';
-import axios from '../../axios-dinelyy';
+import axios from 'axios';
 
 class RestaurantForm extends React.Component {
 
   initialValues = {
-    name: this.props.name ? this.props.name : '',
+    name: '',
     location: '',
     address: '',
     /*city: '',
@@ -26,7 +26,7 @@ class RestaurantForm extends React.Component {
     menu_link: '',
     short_description: '',
     long_description: '',
-    photos: [],
+    photos: this.props.restaurant.photos,
     min_cost_item: '',
     max_cost_item:'',
     services_arr: [],
@@ -60,15 +60,16 @@ class RestaurantForm extends React.Component {
                   initialValues={this.initialValues}
                   onSubmit={this.onSubmit}
                 >
+                  <FormikWizard.Page>
+                    <Photos onPhotosUpload={this.onPhotosUpload}/>
+                  </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateFirstPage}>
                     <Location cuisines={cuisines}/>
                   </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateSecondPage}>
                     <About/>
                   </FormikWizard.Page>
-                  <FormikWizard.Page>
-                    <Photos onPhotosUpload={this.onPhotosUpload}/>
-                  </FormikWizard.Page>
+
                   <FormikWizard.Page validate={validators.validateFourthPage}>
                     <Services services={services}/>
                   </FormikWizard.Page>

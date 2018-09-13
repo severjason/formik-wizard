@@ -65,14 +65,12 @@
   ],
   "photos": [
     {
-      "file": {
-        "url": "http://localhost:5000/uploads/photo/file/5/rest.jpg"
-      }
+      "id": 1,
+      "url": "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350"
     },
     {
-      "file": {
-        "url": "http://localhost:5000/uploads/photo/file/22/rest.jpg"
-      }
+      "id": 2,
+      "url": "https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
     }
   ],
   "neighborhood": {
