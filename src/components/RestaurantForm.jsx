@@ -1,14 +1,16 @@
-import React from 'react';
-import FormikWizard from './FormikWizard';
+import React, { Fragment } from 'react';
+import FormikWizard        from './FormikWizard';
 import {
   Location,
   Photos,
   About,
   Services,
-} from './EditLocationFormPages';
-import * as validators from './Helpers/validate';
+}                          from './EditLocationFormPages';
+import * as validators     from './Helpers/validate';
 import './RestaurantForm.css';
-import axios from 'axios';
+import axios               from 'axios';
+import Rating from 'react-rating';
+import { StarRounded, StarBorderRounded } from '@material-ui/icons';
 
 class RestaurantForm extends React.Component {
 
@@ -53,6 +55,15 @@ class RestaurantForm extends React.Component {
       <main className='new-restaurant-page'>
         <section className='new-restaurant-section py-5'>
           <div className="container">
+            <div>
+              <Rating
+                initialRating={5}
+                emptySymbol={<StarBorderRounded className="rating-star"/>}
+                fullSymbol={<StarRounded className="rating-star"/>}
+                onClick={(value) => console.log(value)}
+                fractions={2}
+              />
+            </div>
             <div className="row">
               <div className="offset-md-2 col-md-8 d-flex align-items-center flex-column">
                 <h2 className='project-title--medium black-color mb-3'>
