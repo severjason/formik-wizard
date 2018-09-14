@@ -13,12 +13,9 @@ import axios from 'axios';
 class RestaurantForm extends React.Component {
 
   initialValues = {
-    name: '',
+    name: this.props.name ? this.props.name : '',
     location: '',
     address: '',
-    /*city: '',
-    state: '',
-    zipcode: '',*/
     phone: '',
     website: '',
     cuisines_arr: [],
@@ -26,7 +23,7 @@ class RestaurantForm extends React.Component {
     menu_link: '',
     short_description: '',
     long_description: '',
-    photos: this.props.restaurant.photos,
+    photos: [],
     min_cost_item: '',
     max_cost_item:'',
     services_arr: [],
@@ -38,10 +35,15 @@ class RestaurantForm extends React.Component {
     restaurant: values,
   });
 
-  onPhotosUpload = (file) => {
+  handleImageDelete = (image) => axios.delete(image.delete_url,{params:{
+    authenticity_token: this.props.form_authenticity_token,
+  }});
+
+  onPhotosUpload = (file, photoTitle) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("authenticity_token", this.props.form_authenticity_token);
+    formData.append("title_photo", photoTitle);
     return axios.post(this.props.photo_upload_url, formData)
   };
 
@@ -60,16 +62,15 @@ class RestaurantForm extends React.Component {
                   initialValues={this.initialValues}
                   onSubmit={this.onSubmit}
                 >
-                  <FormikWizard.Page>
-                    <Photos onPhotosUpload={this.onPhotosUpload}/>
-                  </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateFirstPage}>
                     <Location cuisines={cuisines}/>
                   </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateSecondPage}>
                     <About/>
                   </FormikWizard.Page>
-
+                  <FormikWizard.Page>
+                    <Photos onPhotosUpload={this.onPhotosUpload} onImageDelete={this.handleImageDelete}/>
+                  </FormikWizard.Page>
                   <FormikWizard.Page validate={validators.validateFourthPage}>
                     <Services services={services}/>
                   </FormikWizard.Page>

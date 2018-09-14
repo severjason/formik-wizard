@@ -130,6 +130,19 @@ form {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+
+  .error-container {
+    font-size: 12px;
+    position: absolute;
+    bottom: -2rem;
+    height: 2rem;
+    overflow: hidden;
+    color:#ff4f4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .inner-container {
     position: absolute;
@@ -151,7 +164,7 @@ form {
     }
   }
 
-  .upload-background {
+/*  .upload-background {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -170,7 +183,7 @@ form {
     .error-text {
       color:#ff4f4f;
     }
-  }
+  }*/
 
   .dropzone-image-container {
     position: relative;
@@ -181,7 +194,7 @@ form {
     padding: .2rem;
 
     &.title {
-      border: 1px solid  #27ae60;
+      border: 2px solid  #ff4f4f;
     }
 
     &:hover {
@@ -192,10 +205,19 @@ form {
     .dropzone-action {
       display: none;
       justify-content: center;
+      align-items: center;
       position: absolute;
       text-transform: uppercase;
     }
     .close-icon {
+      width: 3.5rem;
+      height: 1.25rem;
+      font-size: 12px;
+      line-height: 2rem;
+      border-bottom-left-radius: 6px;
+      border-top-right-radius: 6px;
+      border: 1px solid #ff4f4f;
+      background-color: rgba(255, 255, 255, .8);
       cursor: pointer;
       z-index: 20;
       top: .2rem;

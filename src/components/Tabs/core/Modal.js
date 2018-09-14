@@ -1,54 +1,50 @@
 import React                                                                                 from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, FormGroup, Form } from 'reactstrap';
+import {  Modal, ModalHeader, ModalBody, ModalFooter, Input, Label, FormGroup, Form } from 'reactstrap';
 
 class TabModal extends React.Component {
 
-  state = {
-    checked: false,
-  };
-
-  handleClose = () => {
-    this.setState({checked: false}, () => this.props.closeModal());
-  }
-
-  handleCheck = () => this.setState(({checked: !this.state.checked}), () => {
-    if (this.state.checked) {
-      this.props.handleInputChange(0);
-    }
-  });
-
   render() {
-    const {opened, inputValue, handleInputChange, handleItemDelete} = this.props;
+    const {opened, inputValue, handleInputChange, handleItemDelete, error, noGuests, handleCloseModalButton, handleCheck} = this.props;
     return (
-      <Modal isOpen={opened} toggle={this.handleClose}>
+      <Modal isOpen={opened} toggle={handleCloseModalButton}>
         <ModalHeader>Manage reservation</ModalHeader>
         <ModalBody>
           <Form inline>
             <FormGroup>
-              <Label>Actual guests:</Label>
+              <Label className="opacity-text extra-small-text">Actual guests:</Label>
               <Input
                 type="number"
                 min="0"
                 max="12"
                 value={inputValue}
-                disabled={this.state.checked}
+                className="form-control project-input bg-white "
+                disabled={noGuests}
                 onChange={(e) => handleInputChange(e.target.value)}
               />
             </FormGroup>
-            <FormGroup>
-              <Label>No guests:</Label>
-              <Input type="checkbox" onChange={this.handleCheck}/>
+            <FormGroup >
+              <div className="input-checkbox">
+                <span className="opacity-text extra-small-text">No guests:</span>
+                <Input type="checkbox" id='no-guests' checked={noGuests} onChange={handleCheck}/>
+                <Label htmlFor='no-guests'/>
+              </div>
             </FormGroup>
           </Form>
+          {error && <div className="modal-error-text">
+            {error}
+          </div>}
         </ModalBody>
         <ModalFooter>
-          <Button
-            color="primary"
-            disabled={inputValue === null}
-            onClick={handleItemDelete}>Do Something
-          </Button>
+          <button
+            className="btn btn-primary uppercase extra-small-text"
+            disabled={inputValue === ''}
+            onClick={() => {
+              handleItemDelete();
+              handleCloseModalButton()
+            }}>Update
+          </button>
           {' '}
-          <Button color="secondary" onClick={this.handleClose}>Cancel</Button>
+          <a className="btn btn-secondary uppercase extra-small-text" rel="nofollow" onClick={handleCloseModalButton}>Cancel</a>
         </ModalFooter>
       </Modal>
     );

@@ -7,8 +7,8 @@
       "phone": "1111111",
       "reservation_date": "28/07/2018",
       "reservation_time": "22/12/2017",
-      "party_size": 10,
-      "special_requests": "some shit",
+      "actual_guests": 10,
+      "special_request": "some shit",
       "actions": "4444"
     },
     {
@@ -18,8 +18,8 @@
       "phone": "1111111",
       "reservation_date": "28/07/2014",
       "reservation_time": "22/12/2017",
-      "party_size": 5,
-      "special_requests": "some poop",
+      "actual_guests": 5,
+      "special_request": "some poop",
       "actions": "4444"
     }
   ],
@@ -31,8 +31,8 @@
       "phone": "1111111",
       "reservation_date": "28/07/2018",
       "reservation_time": "22/12/2017",
-      "party_size": 10,
-      "special_requests": "some shit",
+      "actual_guests": 10,
+      "special_request": "some shit",
       "actions": "4444"
     },
     {
@@ -42,8 +42,8 @@
       "phone": "1111111",
       "reservation_date": "28/07/2014",
       "reservation_time": "22/12/2017",
-      "party_size": 5,
-      "special_requests": "some poop",
+      "actual_guests": 5,
+      "special_request": "some poop",
       "actions": "4444"
     }
   ],
@@ -54,8 +54,8 @@
       "phone": "1111111",
       "reservation_date": "28/07/2018",
       "reservation_time": "22/12/2017",
-      "party_size": 10,
-      "special_requests": "some shit",
+      "actual_guests": 10,
+      "special_request": "some shit",
       "actions": "4444"
     },
     {
@@ -65,8 +65,8 @@
       "phone": "1111111",
       "reservation_date": "28/07/2014",
       "reservation_time": "22/12/2017",
-      "party_size": 5,
-      "special_requests": "some poop",
+      "actual_guests": 5,
+      "special_request": "some poop",
       "actions": "4444"
     }
   ]

@@ -1,22 +1,36 @@
-import React    from 'react'
+import React from 'react'
 import Dropzone from 'react-dropzone';
 
 class PhotosDropzone extends React.Component {
 
   state = {
     error: null,
-    defaultPhotoId: '',
+    defaultPhotoId: null,
+    maxFiles: 4,
   };
 
-  handleImageDelete = (id) => {
-    console.log(id);
+  clearErrors = () => this.setState({error: null});
+
+  handleDelete = (file, onImageDelete, setFieldValue, values) => {
+    onImageDelete(file).then(() => {
+      setFieldValue('photos', values.filter((f) => f.id !== file.id))
+    })
   }
+
+  showError = (error) =>
+    <div className="error-container" onClick={this.clearErrors}>
+      <div className='error-text'>
+        {error}
+      </div>
+    </div>;
+
 
   render() {
     const setFieldValue = this.props.form.setFieldValue;
-    const {defaultPhotoId, error} = this.state;
+    const {defaultPhotoId, error, maxFiles} = this.state;
     const values = this.props.field.value;
     const onPhotosUpload = this.props[0];
+    const onImageDelete = this.props[1];
     let dropzoneRef = null;
     return (
       <Dropzone
@@ -28,49 +42,48 @@ class PhotosDropzone extends React.Component {
           dropzoneRef = node;
         }}
         onDrop={(acceptedFiles) => {
-
           // do nothing if no files
           if (acceptedFiles.length === 0) {
             return;
           }
           this.setState({error: null});
-          const uploaders = acceptedFiles.map(file => {
-            return onPhotosUpload(file)
-              .then(response => response.data)
-              .catch(error => this.setState({error}))
-          });
-
-          Promise.all(uploaders).then((photos) => {
-            setFieldValue("photos", values.concat(photos))
-          });
+          const upload = async (values) => {
+            const newValues = values;
+            for (const file of acceptedFiles) {
+              await onPhotosUpload(file, defaultPhotoId)
+                .then(responce => newValues.push(responce.data))
+                .catch((error) => this.setState({error: error.message}));
+            }
+            setFieldValue("photos", newValues.slice(0, maxFiles));
+          };
+          return upload(values);
         }}>
-        {({isDragActive, isDragReject, acceptedFiles, rejectedFiles}) => {
-          if (isDragActive) {
-            return <div className="upload-background file-authorized"/>;
-          }
-
-          if (isDragReject) {
-            return <div className="upload-background file-not-authorized"/>;
-          }
-
-          if (error) {
-            return <div className="upload-background file-not-authorized">
-              <div className='error-text'>Error occurred on the server, please try again later</div>
-            </div>;
-          }
-
+        {() => {
+          if (error && values.length === 0) return this.showError(error);
           if (values.length === 0) {
             return <div onClick={() => dropzoneRef.open()} className="add-photo-icon">+</div>
           }
-
           return <React.Fragment>
+            {(error) &&
+            <div className="error-container" onClick={this.clearErrors}>
+              <div className='error-text'>
+                {error}
+              </div>
+            </div>
+            }
             <div className="inner-container" onClick={() => dropzoneRef.open()}/>
+            {(error) && this.showError(error)}
             {values.map((file, i) => {
-              return <div key={i} className={`dropzone-image-container ${file.id === defaultPhotoId ? 'title': ''}` }>
-                <div className="dropzone-action close-icon" onClick={() => this.handleImageDelete(file.id)}>Delete</div>
+              return <div key={i} className={`dropzone-image-container ${file.id === defaultPhotoId ? 'title' : ''}`}>
+                <div
+                  className="dropzone-action close-icon"
+                  onClick={() => this.handleDelete(file, onImageDelete, setFieldValue, values)}>delete
+                </div>
                 <img src={file.url} alt=''/>
-                <div className="dropzone-action set-default" onClick={() => this.setState({defaultPhotoId: file.id})}>
-                  {file.id === defaultPhotoId ? <div className='title'>Title</div> : <div className='title'>Set as title</div>}
+                <div
+                  className="dropzone-action set-default"
+                  onClick={() => this.setState({defaultPhotoId: file.id})}
+                >
                 </div>
               </div>
             })}
